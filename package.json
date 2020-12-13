@@ -1,0 +1,21 @@
+{
+  "name": "my-nuxt-demo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "dev-debug": "node --inspect node_modules/.bin/nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "rapper": "rapper --type normal --rapperPath \"rapper\" --apiUrl \"http://rap2api.taobao.org/repository/get?id=273126&token=_h9Jl7RnOY4Wtj353q3BsPEPkICXcEgT\" --rapUrl \"http://rap2.taobao.org\""
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.12.3",
+    "core-js": "^3.6.5",
+    "element-ui": "^2.13.2",
+    "nuxt": "^2.14.6",
+    "rap": "^1.1.5"
+  },
+  "devDependencies": {}
+}
