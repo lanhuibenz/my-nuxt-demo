@@ -1,6 +1,6 @@
 <template>
   <el-footer>
-    特别鸣谢：蓝卉
+    特别鸣谢：蓝大
   </el-footer>
 </template>
 

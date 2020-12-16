@@ -1,32 +1,76 @@
 <template>
   <el-container class="container">
-    {{ $route.query.pageType }}
+    <div>{{ $route.query.pageType }}</div>
+
+    <el-row v-for="dataItem in dataList" :key="dataItem.communityId">
+      {{ dataItem.campusName }} -- {{ dataItem.communityName }}
+    </el-row>
+
+    <el-row>
+      <el-pagination
+        layout="prev, pager, next"
+        :current-page="page"
+        :page-size="pageSize"
+        :paper-count="4"
+        :total="totalCount"
+        @current-change="changePage">
+      </el-pagination>
+    </el-row>
   </el-container>
 </template>
 
 <script>
-import { fetch } from "../../rapper/index.ts";
-
+import { apiListDormitoryCommunity } from '@/api/api-demo'
 export default {
+  head: {
+    title: '列表界面',
+    meta: [
+      { charset: 'utf-8'},
+      { hid: 'description', name: 'description', content: '这是网页描述内容' },
+      { hid: 'keywords', name: 'keywords', content: '淘宝,领券,秒杀' }, // 搜索引擎能够识别抓取的关键字
+    ]
+  },
   name: 'List',
-  async asyncData({ $axios }) {
-    debugger
-    // 直接使用 fetch 调用请求函数，能获得请求/返回类型校验/提示
-    // 在 vscode 中 alt+点击可以查看接口信息
-    fetch['GET/home/layouts/list']({
-      // 请求参数
-      foo: 'foo'
-    },{
-      // 第二参为可选配置
-      // 请求头 content-type，默认是 'application/json'
-      contentType: 'application/json',
-    }).then(res => {
-      debugger
-      // 使用返回值
-      const nameList = res.taskList.map(e => e.name);
-    })
+  data() {
+    return {
+      page: 1,
+      pageSize: 1,
+      totalCount: 0,
+      dataList: []
+    }
+  },
+  async asyncData({ $axios, $cookies }) {
+    const res = await apiListDormitoryCommunity($axios, {page:1})
+    $cookies.set('token', 'aaaa')
+    return {
+      page: 1,
+      totalCount: res.count,
+      dataList: res.data
+    }
     /*const ip = await $axios.$get('http://icanhazip.com')
     return { ip }*/
+
+    /*const datas = await $axios.post('/dormitory/community/list', {
+      page:1
+    })
+    debugger
+    console.log(datas)*/
+  },
+  /*mounted() {
+    this.test()
+  },*/
+  methods: {
+    changePage() {
+      apiListDormitoryCommunity(this.$axios, {page:this.page}).then(res => {
+        const token = this.$cookies.get('token')
+        console.log('token', token)
+        console.log('changePage', res)
+        this.dataList = res.data
+        this.totalCount = res.count
+      }).catch(err => {
+        console.log(err)
+      })
+    }
   }
 }
 </script>

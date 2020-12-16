@@ -1,4 +1,5 @@
-import axiosData from './http/axios'
+import axiosData from './config/axios'
+const proxyList = require('./config/proxy-list')
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -19,8 +20,10 @@ export default {
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
+  // plugins is just like needs to install by Vue, as. Vue.install(elementUI)... and the elementUI is a plugin
   plugins: [
     '@/plugins/element-ui',
+    '@/plugins/axios'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -32,8 +35,13 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
-    "@nuxtjs/axios"
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy',
+    'cookie-universal-nuxt'
   ],
+  axios: axiosData,
+
+  proxy: proxyList,
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
@@ -43,7 +51,6 @@ export default {
         config.devtool = isClient ? 'eval-source-map' : 'inline-source-map'
       }
     }
-  },
+  }
 
-  axios: axiosData
 }

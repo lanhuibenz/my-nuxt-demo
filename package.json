@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "nuxt",
     "dev-debug": "node --inspect node_modules/.bin/nuxt",
+    "dev-debug2": "node --inspect server-debugger.js",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
@@ -12,6 +13,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.3",
+    "cookie-universal-nuxt": "^2.1.4",
     "core-js": "^3.6.5",
     "element-ui": "^2.13.2",
     "nuxt": "^2.14.6",
