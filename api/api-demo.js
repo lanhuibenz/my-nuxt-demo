@@ -8,3 +8,7 @@
 export function apiListDormitoryCommunity($axios, params) {
   return $axios.post('/dormitory/community/list', params)
 }
+
+export function apiListFirstPageContents($axios, params) {
+  return $axios.post('/normal-website/home/layouts/list', params)
+}

@@ -33,11 +33,11 @@ export default ({ redirect, $axios }) => {
         break;
       case 403:
         // 重定向到 403 页
-        redirect('/error/403')
+        redirect('/error/forbidden')
         break;
       case 404:
         // 重定向到 404 页
-        redirect('/error/404')
+        redirect('/error/not-found')
         break;
       case 500:
         // 500报错，提示

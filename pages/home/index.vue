@@ -16,6 +16,7 @@
 </template>
 
 <script>
+  import { apiListFirstPageContents } from '@/api/api-demo'
 export default {
   name: 'Home',
   components: {
@@ -176,6 +177,11 @@ export default {
           }]
         }]
     }
+  },
+  async asyncData({$axios}) {
+    const res = await apiListFirstPageContents($axios, {})
+    debugger
+    console.log(res)
   }
 }
 </script>
