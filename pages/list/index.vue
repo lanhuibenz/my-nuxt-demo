@@ -20,7 +20,8 @@
 </template>
 
 <script>
-import { apiListDormitoryCommunity } from '@/api/api-demo'
+  import { apiListDormitoryCommunity } from '@/api/api-demo'
+import { apiTestRap2 } from '@/api/api-rap2-demo'
 export default {
   head: {
     title: '列表界面',
@@ -40,7 +41,9 @@ export default {
     }
   },
   async asyncData({ $axios, $cookies }) {
-    const res = await apiListDormitoryCommunity($axios, {page:1})
+    // const res = await apiListDormitoryCommunity($axios, {page:1})
+    const res = await apiTestRap2($axios, {})
+    debugger
     $cookies.set('token', 'aaaa')
     return {
       page: 1,

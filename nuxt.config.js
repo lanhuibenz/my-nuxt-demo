@@ -23,7 +23,8 @@ export default {
   // plugins is just like needs to install by Vue, as. Vue.install(elementUI)... and the elementUI is a plugin
   plugins: [
     '@/plugins/element-ui',
-    '@/plugins/axios'
+    '@/plugins/axios',
+    '@/plugins/rap2'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)

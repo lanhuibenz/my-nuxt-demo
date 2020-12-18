@@ -16,7 +16,8 @@
 </template>
 
 <script>
-  import { apiListFirstPageContents } from '@/api/api-demo'
+  // import { apiListFirstPageContents } from '@/api/api-demo'
+  import { apiTestRap2 } from '@/api/api-rap2-demo'
 export default {
   name: 'Home',
   components: {
@@ -179,7 +180,7 @@ export default {
     }
   },
   async asyncData({$axios}) {
-    const res = await apiListFirstPageContents($axios, {})
+    const res = await apiTestRap2($axios, {})
     debugger
     console.log(res)
   }
