@@ -24,7 +24,8 @@ export default {
   plugins: [
     '@/plugins/element-ui',
     '@/plugins/axios',
-    '@/plugins/rap2'
+    '@/plugins/rap2',
+    '@/plugins/dayjs'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)

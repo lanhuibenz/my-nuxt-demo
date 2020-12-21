@@ -1,4 +1,5 @@
 import { Message } from "element-ui";
+import { logout } from '~/assets/logout'
 export default ({ redirect, $axios }) => {
   $axios.onRequest(config => {
     /*const jwt = Cookie.get('token')
@@ -11,12 +12,7 @@ export default ({ redirect, $axios }) => {
 
   $axios.onResponse(res => {
     // 返回数据逻辑处理
-    // console.log('test onResponse', res.data)
     return res.data
-    /*if (res.data.code === 1) {
-      // 重定向到 login 页
-      redirect('/login')
-    }*/
   });
 
   $axios.onError(error => {
@@ -25,11 +21,12 @@ export default ({ redirect, $axios }) => {
       case 401:
         // 没有权限，提示
         Message({
-          //  饿了么的消息弹窗组件,类似toast
           showClose: true,
           message: error.message,
           type: "error.data.error.message"
         });
+        // 登出
+        logout()
         break;
       case 403:
         // 重定向到 403 页
@@ -42,7 +39,6 @@ export default ({ redirect, $axios }) => {
       case 500:
         // 500报错，提示
         Message({
-          //  饿了么的消息弹窗组件,类似toast
           showClose: true,
           message: error.message,
           type: "error.data.error.message"

@@ -2,7 +2,6 @@
 import { overrideFetch, fetch } from '@/rapper/index'
 
 export function apiTestRap2($axios, params) {
-  debugger
 // 直接使用 fetch 调用请求函数，能获得请求/返回类型校验/提示
 // 在 vscode 中 alt+点击可以查看接口信息
   return fetch['GET/home/layouts/list']({
